@@ -4,7 +4,7 @@ soc-faker is used to generate fake data for use by Security Operation Centers, I
 
 ## Getting Started
 
-`soc-faker` works with Python 3.6 or greater. You can install `soc-faker` using `pip` as well as cloning this repository directly.
+`soc-faker` works with Python 3.11 or greater. You can install `soc-faker` using `pip` as well as cloning this repository directly.
 
 At the time of writing this document, `soc-faker` has the ability to fake data for the following main categories.  You can find specific details for each category by selecting the links below:
 
@@ -51,24 +51,14 @@ pip install soc-faker --user
 ### Installing from source
 
 ```bash
-git clone https://github.com/swimlane/soc-faker.git
+git clone https://github.com/mikeyasaservice/soc-faker.git
 cd soc-faker
-python setup.py install
+uv sync --locked
 ```
 
 ### Prerequisites
 
-The following libraries are required and installed by soc-faker
-
-```
-requests==2.23.0
-pendulum==2.1.2
-ipaddress==1.0.23
-bs4==0.0.1
-xmltodict==0.12.0
-netaddr==0.7.20
-fire==0.3.1
-```
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then run `uv sync --locked`. Dependencies are declared in `pyproject.toml` and locked in `uv.lock`.
 
 ## Usage
 
@@ -138,7 +128,17 @@ Running this will call the test python file in [bin\test.py](bin\test.py).  Modi
 
 ## Running the tests
 
-Tests within this project should cover all available properties and methods.  As this project grows the tests will become more robust but for now we are testing that they exist and return outputs.
+Run tests and validate distributions with:
+
+```bash
+uv sync --locked
+uv run coverage run -m pytest
+uv run coverage report
+uv build
+uv run twine check dist/*
+```
+
+Run the CLI from a checkout with `uv run soc-faker file hashes`. CI tests Python 3.11–3.14 on Linux, macOS, and Windows.
 
 ## Built With
 

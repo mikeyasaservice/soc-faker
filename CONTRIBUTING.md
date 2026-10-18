@@ -10,3 +10,16 @@ Swimlane welcomes contributions to our projects. Please follow these instruction
   - Be sure to outline what you are accomplishing with your changes and follow any template if applicable
 
 Please be patient with your request! We value your contribution and will try to find time to review your pull request when we can.
+## Development
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and Python 3.11 or newer, then run:
+
+```bash
+uv sync --locked
+uv run coverage run -m pytest
+uv run coverage report
+uv build
+uv run twine check dist/*
+```
+
+Dependencies are maintained in `pyproject.toml`. After changing them, run `uv lock` and commit both `pyproject.toml` and `uv.lock`.

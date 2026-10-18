@@ -4,7 +4,7 @@ soc-faker is used to generate fake data for use by Security Operation Centers, I
 
 ## Getting Started
 
-`soc-faker` is compatible with Python 2.x and 3.x.  You can install `soc-faker` using `pip` as well as cloning this repository directly.
+`soc-faker` requires Python 3.11 or greater.  You can install `soc-faker` using `pip` as well as cloning this repository directly.
 
 At the time of writing this document, `soc-faker` has the ability to fake data for the following main categories.  You can find specific details for each category by selecting the links below:
 
@@ -50,24 +50,14 @@ pip install soc-faker --user
 ### Installing from source
 
 ```bash
-git clone https://github.com/swimlane/soc-faker.git
+git clone https://github.com/mikeyasaservice/soc-faker.git
 cd soc-faker
-python setup.py install
+uv sync --locked
 ```
 
 ### Prerequisites
 
-The following libraries are required and installed by soc-faker
-
-```
-requests==2.23.0
-pendulum==2.1.2
-ipaddress==1.0.23
-bs4==0.0.1
-xmltodict==0.12.0
-netaddr==0.7.20
-fire==0.3.1
-```
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then run `uv sync --locked`. Dependencies are declared in `pyproject.toml` and locked in `uv.lock`.
 
 ## Using soc-faker
 

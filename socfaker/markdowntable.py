@@ -1,4 +1,3 @@
-import codecs
 import re
 import collections
 
@@ -7,7 +6,8 @@ class MarkdownTable(object):
 
     def __init__(self, file_path):
         try:
-            self.input_file = (codecs.open(file_path, mode="r", encoding="utf-8")).read()
+            with open(file_path, encoding="utf-8") as source:
+                self.input_file = source.read()
         except:
             raise AssertionError('Unable to open the provided file path')
 

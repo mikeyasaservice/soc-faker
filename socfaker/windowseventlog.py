@@ -38,7 +38,7 @@ class WindowsEventLog(object):
             
             system = WindowsEventSystem(
                     random.choice(self.__provider_list),
-                    md_file.rsplit('/', 1)[1].split('-')[1].strip('.md'),
+                    os.path.basename(md_file).split('-')[1].removesuffix('.md'),
                     os_version,
                     computer_name
                 )
